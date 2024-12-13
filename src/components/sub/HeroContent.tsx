@@ -2,25 +2,20 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-// import {
-//   slideInFromLeft,
-//   slideInFromRight,
-//   slideInFromTop,
-// } from "@/utils/motion";
 import { SparklesIcon } from "@heroicons/react/24/solid";
-import Image from "next/image";
 import {
   slideInFromLeft,
   slideInFromRight,
   slideInFromTop,
 } from "../../../utils/motion";
+import { Card } from "../main/Card";
 
 const HeroContent = () => {
   return (
     <motion.div
       initial="hidden"
       animate="visible"
-      className="flex flex-row items-center justify-center px-20 mt-40 w-full z-[20]"
+      className="flex flex-row w-[100%] items-center justify-between mt-40 z-[20]"
     >
       <div className="h-full w-full flex flex-col gap-5 justify-center m-auto text-start">
         <motion.div
@@ -38,12 +33,12 @@ const HeroContent = () => {
           className="flex flex-col gap-6 mt-6 text-6xl font-bold text-white max-w-[600px] w-auto h-auto"
         >
           <span>
-            Providing
+            I am{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-cyan-500">
               {" "}
-              the best{" "}
-            </span>
-            project exprience
+              ROEURN
+            </span>{" "}
+            CHUNGSIANG
           </span>
         </motion.div>
 
@@ -52,26 +47,23 @@ const HeroContent = () => {
           className="text-lg text-gray-400 my-5 max-w-[600px]"
         >
           I&apos;m a Full Stack Software Engineer with experience in Website,
-          Mobile, and Software development. Check out my projects and skills.
+          Mobile, and Software development. Check out my resume below.
         </motion.p>
         <motion.a
           variants={slideInFromLeft(1)}
+          href="#resume"
+          target="_blank"
           className="py-2 button-primary text-center text-white cursor-pointer rounded-lg max-w-[200px]"
         >
-          Learn More!
+          View Resume!
         </motion.a>
       </div>
 
       <motion.div
         variants={slideInFromRight(0.8)}
-        className="w-full h-full flex justify-center items-center"
+        className="w-full h-full flex justify-end"
       >
-        <Image
-          src="/mainIconsdark.svg"
-          alt="work icons"
-          height={650}
-          width={650}
-        />
+        <Card />
       </motion.div>
     </motion.div>
   );
