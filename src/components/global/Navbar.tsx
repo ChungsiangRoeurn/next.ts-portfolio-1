@@ -1,7 +1,6 @@
 import React from "react";
 import { navItems } from "../constants/navItems";
 import AnimatedBackground from "../ui/animated-background";
-import { BorderTrail } from "../ui/border-trail";
 
 const Navbar = () => {
   return (

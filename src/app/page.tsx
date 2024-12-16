@@ -1,10 +1,10 @@
-import About from "@/components/main/About";
-import Hero from "@/components/main/Hero";
+import About from "@/components/module/about-page/About";
+import Hero from "@/components/module/home-page/Hero";
 
 const page = () => {
   return (
-    <main className="h-full w-full px-16 ">
-      <div className="flex px-20 flex-col h-[] gap-20">
+    <main className="h-full w-full px-0 lg:px-20 ">
+      <div className="grid md:px-20 grid-col gap-0 ">
         <Hero />
         <About />
       </div>
