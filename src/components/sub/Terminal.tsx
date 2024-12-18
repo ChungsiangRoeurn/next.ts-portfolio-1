@@ -97,7 +97,7 @@ const Terminal = () => {
   };
 
   return (
-    <div className="w-[600px] h-[360px] mx-auto rounded-xl relative overflow-hidden bg-gray-950 border-gray-400 border-2">
+    <div className="w-[500px] h-[350px] md:w-[600px] md:h-[400px] mx-auto rounded-xl relative overflow-hidden bg-[#1a1824] border-gray-400 border-2">
       <header className="flex items-center h-8 px-3 bg-blue-300 rounded-t-lg">
         <div className="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
         <div className="w-3 h-3 bg-yellow-500 rounded-full mr-2"></div>

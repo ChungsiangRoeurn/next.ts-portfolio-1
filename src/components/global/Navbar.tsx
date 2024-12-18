@@ -1,13 +1,19 @@
 import React from "react";
 import { navItems } from "../constants/navItems";
 import AnimatedBackground from "../ui/animated-background";
+import { BorderTrail } from "../ui/border-trail";
 
 const Navbar = () => {
   return (
     <div className="w-full h-[65px] fixed top-5 z-50">
+      {" "}
+      {/* Added relative positioning */}
       <div className="w-full h-full flex items-center justify-center px-[10px]">
-        <div className="w-[450px] md:w-[500px] h-full flex items-center justify-center md:mr-20">
-          <div className="flex items-center justify-between w-full h-15 border border-[#7042f861] bg-[#0300145e] mr-[15px] px-[20px] py-[10px] rounded-full text">
+        <div className="w-[450px] md:w-[500px] h-full flex items-center justify-center">
+          <div className="flex items-center justify-between w-full h-15 border border-[#64748b] bg-[#0300145e] px-[20px] py-[10px] rounded-xl relative">
+            {" "}
+            {/* Added relative */}
+            <BorderTrail />
             <AnimatedBackground
               defaultValue={navItems[0].name}
               className="bg-"
