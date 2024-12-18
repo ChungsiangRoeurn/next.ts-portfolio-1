@@ -81,7 +81,7 @@ const AboutDetails = () => {
   };
 
   return (
-    <div className="w-full h-full mx-auto rounded-3xl relative overflow-hidden bg-gray-950 border-2">
+    <div className="w-full h-full mx-auto rounded-3xl relative overflow-hidden bg-[#1a1824] border-2">
       <section className="p-3 h-[calc(100%-2rem)] overflow-auto text-white font-mono text-sm">
         {/* Render typed history */}
         <div className="history">

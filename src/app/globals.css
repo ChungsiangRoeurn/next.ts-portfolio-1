@@ -45,7 +45,7 @@
 }
 .button-primary {
   position: relative;
-  background-color: purple ; /* Base color */
+  background-color: purple;
   color: #fff;
   padding: 10px 20px;
   border-radius: 8px;
@@ -97,4 +97,36 @@ html {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes marquee-reverse {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 20s linear infinite; /* Slower speed (20s) */
+}
+
+.animate-marquee-reverse {
+  animation: marquee-reverse 20s linear infinite; /* Slower speed (20s) */
+}
+
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
+
+.project-cards {
+  @apply border-zinc-950 border-2 rounded-xl h-[180px] w-[180px] lg:h-[300px] lg:w-[300px]
 }
