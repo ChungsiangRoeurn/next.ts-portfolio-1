@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { gsap } from "gsap";
 import { Expo } from "gsap/gsap-core";
-import { aboutMeCards } from "../constants/about";
+import { aboutMeCards } from "@/components/constants/about";
 
 const AboutCards: React.FC = () => {
   const [count, setCount] = useState<number>(0);

@@ -3,8 +3,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { slideInFromLeft, slideInFromTop } from "../../../../utils/motion";
-import { BorderTrail } from "../../ui/border-trail";
-import AboutDetails from "../../sub/AboutDetails";
+import { BorderTrail } from "@/components/ui/border-trail";
+import AboutDetails from "@/components/sub/AboutDetails";
 import AboutCards from "@/components/sub/AboutCard";
 
 const About = () => {

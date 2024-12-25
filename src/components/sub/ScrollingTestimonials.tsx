@@ -1,4 +1,4 @@
-import { testimonials } from "../constants/testimonial";
+import { testimonials } from "@/components/constants/testimonial";
 
 const ScrollingTestimonials: React.FC = () => {
   return (
@@ -33,7 +33,7 @@ const ScrollingTestimonials: React.FC = () => {
           ))}
         </div>
       </div>
-      </div>
+    </div>
   );
 };
 

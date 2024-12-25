@@ -1,10 +1,8 @@
 "use client";
 
-import { SparklesIcon } from "@heroicons/react/24/solid";
-// import HeroContent from "../sub/HeroContent";
 import { motion } from "framer-motion";
 import { slideInFromLeft } from "../../../../utils/motion";
-import Terminal from "../../sub/Terminal";
+import Terminal from "@/components/sub/Terminal";
 
 const Hero = () => {
   return (
