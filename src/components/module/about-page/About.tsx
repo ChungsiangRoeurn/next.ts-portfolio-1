@@ -9,9 +9,11 @@ import AboutCards from "@/components/sub/AboutCard";
 
 const About = () => {
   return (
-    <section className="md:mt-20 lg:mt-0 flex flex-col items-center justify-center ">
+    <section
+      id="about-page"
+      className="md:mt-20 lg:mt-0 flex flex-col items-center justify-center "
+    >
       <div
-        id="skills"
         style={{ transform: "scale(0.9" }}
         className="flex flex-col items-center justify-center h-full relative overflow-hidden"
       >
@@ -20,7 +22,7 @@ const About = () => {
             variants={slideInFromTop}
             className="flex items-center rounded-full py-2 px-3 border border-purple-400 opacity-90"
           >
-            <h1 className="text-purple-300 text-sm sm:text-base">About Me</h1>
+            <h1 id="about" className="text-purple-300 text-sm sm:text-base">About Me</h1>
           </motion.div>
           <motion.div
             variants={slideInFromLeft(0.5)}

@@ -2,6 +2,7 @@ import React from "react";
 import { navItems } from "../constants/navItems";
 import AnimatedBackground from "../ui/animated-background";
 import { BorderTrail } from "@/components/ui/border-trail";
+import Link from "next/link";
 
 const Navbar = () => {
   return (
@@ -16,7 +17,7 @@ const Navbar = () => {
             <BorderTrail />
             <AnimatedBackground
               defaultValue={navItems[0].name}
-              className="bg-"
+              className="flex items-center justify-center"
               transition={{
                 type: "spring",
                 bounce: 0.2,
@@ -25,7 +26,8 @@ const Navbar = () => {
               enableHover
             >
               {navItems.map((item, index) => (
-                <button
+                <Link
+                  href={item.href}
                   key={index}
                   data-id={item.name}
                   type="button"
@@ -34,7 +36,7 @@ const Navbar = () => {
                   title={item.name}
                 >
                   {item.name}
-                </button>
+                </Link>
               ))}
             </AnimatedBackground>
           </div>

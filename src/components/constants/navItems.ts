@@ -5,7 +5,7 @@ export const navItems = [
   },
   {
     name: "About",
-    href: "/about-page",
+    href: "#about",
   },
   {
     name: "Skills",
