@@ -1,4 +1,4 @@
-import { BorderTrail } from "@/components/core/border-trail";
+import { BorderTrail } from "@/components/ui/border-trail";
 
 export function BorderTrailTextarea() {
   return (
