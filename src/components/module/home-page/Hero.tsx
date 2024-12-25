@@ -1,14 +1,18 @@
 "use client";
 
-import { SparklesIcon } from "@heroicons/react/24/solid";
-// import HeroContent from "../sub/HeroContent";
 import { motion } from "framer-motion";
 import { slideInFromLeft } from "../../../../utils/motion";
 import Terminal from "../../sub/Terminal";
 
 const Hero = () => {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
   return (
-    <div className="flex h-screen items-center flex-col lg:flex-row justify-center px-6 lg:px-12">
+    <section
+      id="home"
+      className="flex h-screen items-center flex-col lg:flex-row justify-center px-6 lg:px-12"
+    >
       <div className="flex flex-col items-center text-center lg:items-start lg:text-left w-full lg:w-1/2 mt-44 lg:mt-0 ">
         <motion.div
           variants={slideInFromLeft(0.5)}
@@ -45,7 +49,7 @@ const Hero = () => {
       <div className="w-full mt-8 lg:w-1/2 flex justify-center items-center">
         <Terminal />
       </div>
-    </div>
+    </section>
   );
 };
 
