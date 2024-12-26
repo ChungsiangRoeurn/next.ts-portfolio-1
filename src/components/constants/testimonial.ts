@@ -29,20 +29,12 @@ export const testimonials = [
   {
     image: "/assets/express.png",
   },
-  {
-    image: "/assets/framer.png",
-  },
-  {
-    image: "/assets/mui.png",
-  },
+
   {
     image: "/assets/gitwhite.png",
   },
 
   {
     image: "/assets/mysql.png",
-  },
-  {
-    image: "/assets/postger.png",
   },
 ];
