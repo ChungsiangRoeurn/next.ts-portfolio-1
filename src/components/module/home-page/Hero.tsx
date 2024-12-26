@@ -38,7 +38,7 @@ const Hero = () => {
 
         <motion.a
           variants={slideInFromLeft(1)}
-          href="#resume"
+          href="https://www.canva.com/design/DAGIuiZ3iNI/9VdDGw-wWpQdoQZYc5Q0jw/edit?utm_content=DAGIuiZ3iNI&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
           target="_blank"
           className="py-2 button-primary px-4 mt-6 bg-local rounded-full text-center text-gray-500 font-semibold max-w-[200px]"
         >

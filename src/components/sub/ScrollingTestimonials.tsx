@@ -33,7 +33,7 @@ const ScrollingTestimonials: React.FC = () => {
           ))}
         </div>
       </div>
-      </div>
+    </div>
   );
 };
 

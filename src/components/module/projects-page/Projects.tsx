@@ -40,8 +40,8 @@ const Projects = () => {
               className="absolute inset-0 w-full h-full"
             >
               <Image
-                src="/assets/project1.png"
-                alt="project1"
+                src="/assets/pj1.png"
+                alt="pj1"
                 layout="fill"
                 className="object-cover rounded-xl hover:scale-110 transition-transform duration-300 ease-in-out"
                 quality={100}
@@ -57,8 +57,8 @@ const Projects = () => {
               className="absolute inset-0 w-full h-full"
             >
               <Image
-                src="/assets/project2.png"
-                alt="project2"
+                src="/assets/pj2.png"
+                alt="pj2"
                 layout="fill"
                 className="object-cover rounded-xl hover:scale-110 transition-transform duration-300 ease-in-out"
                 quality={100}
@@ -74,8 +74,8 @@ const Projects = () => {
               className="absolute inset-0 w-full h-full"
             >
               <Image
-                src="/assets/project3.png"
-                alt="project3"
+                src="/assets/pj3.png"
+                alt="pj3"
                 layout="fill"
                 className="object-cover rounded-xl hover:scale-110 transition-transform duration-300 ease-in-out"
                 quality={100}
@@ -86,13 +86,13 @@ const Projects = () => {
           {/* Project Card 4 */}
           <div className="project-cards relative overflow-hidden rounded-xl shadow-lg">
             <Link
-              href="https://todo-list-oof7ugrdp-chungsiang-roeurns-projects.vercel.app/?"
+              href="https://frontend-portfolio-liard.vercel.app/#home"
               target="_blank"
               className="absolute inset-0 w-full h-full"
             >
               <Image
-                src="/assets/project2.png"
-                alt="project2"
+                src="/assets/pj4.png"
+                alt="project4"
                 layout="fill"
                 className="object-cover rounded-xl hover:scale-110 transition-transform duration-300 ease-in-out"
                 quality={100}
@@ -108,7 +108,7 @@ const Projects = () => {
               className="absolute inset-0 w-full h-full"
             >
               <Image
-                src="/assets/project1.png"
+                src="/assets/pj4.png"
                 alt="project1"
                 layout="fill"
                 className="object-cover rounded-xl hover:scale-110 transition-transform duration-300 ease-in-out"
@@ -124,7 +124,7 @@ const Projects = () => {
               className="absolute inset-0 w-full h-full"
             >
               <Image
-                src="/assets/project3.png"
+                src="/assets/pj3.png"
                 alt="project3"
                 layout="fill"
                 className="object-cover rounded-xl hover:scale-110 transition-transform duration-300 ease-in-out"
