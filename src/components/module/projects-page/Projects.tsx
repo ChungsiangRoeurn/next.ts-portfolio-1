@@ -119,12 +119,12 @@ const Projects = () => {
           {/* Project Card 6 */}
           <div className="project-cards relative overflow-hidden rounded-xl shadow-lg">
             <Link
-              href="https://chungsiang-roeurn.vercel.app/"
+              href="https://waste-management-chi.vercel.app/"
               target="_blank"
               className="absolute inset-0 w-full h-full"
             >
               <Image
-                src="/assets/pj3.png"
+                src="/assets/pj6.png"
                 alt="project3"
                 layout="fill"
                 className="object-cover rounded-xl hover:scale-110 transition-transform duration-300 ease-in-out"
