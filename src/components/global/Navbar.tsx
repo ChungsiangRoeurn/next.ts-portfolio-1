@@ -31,7 +31,7 @@ const Navbar = () => {
                   key={index}
                   data-id={item.name}
                   type="button"
-                  className="px-2 py-0.5 text-zinc-600 transition-colors duration-300 hover:text-zinc-50 dark:text-zinc-400 dark:hover:text-zinc-50"
+                  className="px-2 py-0.5 text-zinc-600 transition-colors duration-300 hover:text-white dark:text-zinc-400 dark:hover:text-zinc-50"
                   aria-label={item.name}
                   title={item.name}
                 >
