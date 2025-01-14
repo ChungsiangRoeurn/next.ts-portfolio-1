@@ -4,6 +4,7 @@ import About from "@/components/module/about-page/About";
 import Hero from "@/components/module/home-page/Hero";
 import Projects from "@/components/module/projects-page/Projects";
 import Skills from "@/components/module/skills-page/Skills";
+import { AccordionDemo } from "@/components/module/faq-page/Faq";
 
 const page = () => {
   return (
@@ -13,6 +14,7 @@ const page = () => {
         <About />
         <Skills />
         <Projects />
+        <AccordionDemo />
         <Footer />
       </div>
     </main>
