@@ -1,9 +1,9 @@
 import Head from "next/head";
 import Footer from "@/components/global/Footer";
-import About from "@/components/module/about-page/About";
-import Hero from "@/components/module/home-page/Hero";
-import Projects from "@/components/module/projects-page/Projects";
-import Skills from "@/components/module/skills-page/Skills";
+import About from "@/components/module/about-page/page";
+import Hero from "@/components/module/home-page/page";
+import Projects from "@/components/module/projects-page/page";
+import Skills from "@/components/module/skills-page/page";
 
 const page = () => {
   return (
