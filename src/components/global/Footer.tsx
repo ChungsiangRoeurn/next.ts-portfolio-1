@@ -4,7 +4,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div className="h-auto w-full mt-36 flex flex-col items-center justify-center ">
+    <div className="h-auto w-full mt-52 flex flex-col items-center justify-center ">
       <div className="flex-col flex justify-center items-center">
         <h1 className="text-slate-400">
           Belongs to <span className="underline">Chungsiang Roeurn</span>
