@@ -1,24 +1,14 @@
-"use client";
+'use client'
 
-import { motion } from "framer-motion";
-import { slideInFromLeft, slideInFromTop } from "../../../../utils/motion";
-import Image from "next/image";
-import Link from "next/link";
-import {
-  Accordion,
-  AccordionItem,
-  AccordionTrigger,
-  AccordionContent,
-} from "@/components/ui/accordion";
-import FrequencyAsk from "../accordion-page/page";
+import { motion } from 'framer-motion'
+import Image from 'next/image'
+import Link from 'next/link'
+import { slideInFromLeft, slideInFromTop } from '../../../../utils/motion'
 
 const Projects = () => {
   return (
     <section id="projects-page" className="w-full h-screen mt-20 flex flex-col">
-      <div
-        style={{ transform: "scale(0.9)" }}
-        className="flex items-center justify-center"
-      >
+      <div style={{ transform: 'scale(0.9)' }} className="flex items-center justify-center">
         <div className="w-full h-auto flex flex-col items-center ">
           <motion.div
             variants={slideInFromTop}
@@ -32,8 +22,7 @@ const Projects = () => {
             variants={slideInFromLeft(0.5)}
             className="text-[30px] text-white font-medium mt-[10px] text-center mb-10"
           >
-            I have worked on various projects to enhance my skills and
-            experience.
+            I have worked on various projects to enhance my skills and experience.
           </motion.div>
         </div>
       </div>
@@ -89,19 +78,10 @@ const Projects = () => {
               />
             </Link>
           </div>
-
-          {/* Additional Project Cards */}
-          {/* Add other project cards here */}
         </div>
       </div>
-      <div className="flex flex-col justify-center items-center text-white mt-10">
-        <h1 className="text-[30px] text-white font-medium mt-[10px] text-center">
-          Frequency Ask Questions
-        </h1>
-        <FrequencyAsk />
-      </div>
     </section>
-  );
-};
+  )
+}
 
-export default Projects;
+export default Projects
