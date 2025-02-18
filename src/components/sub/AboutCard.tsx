@@ -1,82 +1,124 @@
-"use client";
+import { motion, useMotionValue, useTransform } from 'framer-motion'
+import Image from 'next/image'
+import { useState } from 'react'
+import { aboutMeCards } from '../constants/about'
 
-import React, { useState } from "react";
-import { gsap } from "gsap";
-import { Expo } from "gsap/gsap-core";
-import { aboutMeCards } from "../constants/about";
+interface CardRotateProps {
+  children: React.ReactNode
+  onSendToBack: () => void
+  sensitivity: number
+}
 
-const AboutCards: React.FC = () => {
-  const [count, setCount] = useState<number>(0);
+function CardRotate({ children, onSendToBack, sensitivity }: CardRotateProps) {
+  const x = useMotionValue(0)
+  const y = useMotionValue(0)
+  const rotateX = useTransform(y, [-100, 100], [60, -60])
+  const rotateY = useTransform(x, [-100, 100], [-60, 60])
 
-  // Shuffle animation for the card
-  const shuffleCard = (card: HTMLElement) => {
-    gsap.fromTo(
-      card,
-      { x: 410, y: -15, scale: 0.9, ease: Expo.easeOut },
-      { x: 0, y: 0, scale: 1, ease: Expo.easeIn, duration: 0.6 }
-    );
-  };
-
-  // Hover effect to scale the card
-  const hoverEffect = (card: HTMLElement, scale: number) => {
-    gsap.to(card, { scale, duration: 0.3, ease: Expo.easeOut });
-  };
-
-  const handleClick = (
-    e: React.MouseEvent<HTMLDivElement>,
-    cardIndex: number
-  ) => {
-    const target = e.currentTarget;
-    const updatedCount = count < 3 ? count + 1 : 0;
-
-    // Swap the image index between 0 and 1 (toggle images)
-    const updatedImageIndex = aboutMeCards[cardIndex].imageIndex === 0 ? 1 : 0;
-    aboutMeCards[cardIndex].imageIndex = updatedImageIndex;
-
-    if (count < 3) {
-      target.classList.remove("z-50");
-      target.classList.add("z-10");
+  function handleDragEnd(_: never, info: { offset: { x: number; y: number } }) {
+    if (Math.abs(info.offset.x) > sensitivity || Math.abs(info.offset.y) > sensitivity) {
+      onSendToBack()
     } else {
-      document.querySelectorAll(".tarot-card").forEach((el) => {
-        el.classList.remove("z-10");
-      });
+      x.set(0)
+      y.set(0)
     }
-
-    setCount(updatedCount);
-    shuffleCard(target);
-  };
+  }
 
   return (
-    <div className="h-full w-full mx-auto rounded-3xl relative overflow-hidden flex items-center justify-center">
-      {aboutMeCards.map((card, index) => (
-        <div
-          key={card.id}
-          onClick={(e) => handleClick(e, index)}
-          onMouseEnter={(e) => hoverEffect(e.currentTarget, 1.1)} // Scale up on hover
-          onMouseLeave={(e) => hoverEffect(e.currentTarget, 1)} // Scale back to normal on hover out
-          className={`tarot-card absolute rounded-2xl border-2 border-white shadow-2xl cursor-pointer transition-all duration-300 ${
-            index === 0
-              ? "rotate-[-3deg] z-50"
-              : index === 1
-              ? "rotate-[4deg]"
-              : index === 2
-              ? "rotate-[10deg]"
-              : "rotate-[4deg]"
-          } 
-          // Responsive card size and position
-          md:w-[400px] md:h-[400px] md:scale-100 
-          sm:w-[300px] sm:h-[300px] sm:scale-95 
-          xs:w-[250px] xs:h-[250px] xs:scale-90`}
-        >
-          <img
-            src={card.images[card.imageIndex]} // Use the imageIndex to select the image
-            alt={card.alt}
-            className="lg:w-full w-[250px] bg-red-400  h-[250px] md:w-[300px] md:h-[300px] lg:h-full object-cover rounded-2xl"
-          />
-        </div>
-      ))}
-    </div>
-  );
-};
+    <motion.div
+      className="absolute cursor-grab"
+      style={{ x, y, rotateX, rotateY }}
+      drag
+      dragConstraints={{ top: 0, right: 0, bottom: 0, left: 0 }}
+      dragElastic={0.6}
+      whileTap={{ cursor: 'grabbing' }}
+      onDragEnd={handleDragEnd}
+    >
+      {children}
+    </motion.div>
+  )
+}
 
-export default AboutCards;
+interface StackProps {
+  randomRotation?: boolean
+  sensitivity?: number
+  cardDimensions?: { width: number; height: number }
+  sendToBackOnClick?: boolean
+  animationConfig?: { stiffness: number; damping: number }
+}
+
+export default function Stack({
+  randomRotation = false,
+  sensitivity = 200,
+  cardDimensions = { width: 450, height: 450 },
+  animationConfig = { stiffness: 260, damping: 20 },
+  sendToBackOnClick = false,
+}: StackProps) {
+  const [cards, setCards] = useState(
+    aboutMeCards.map((card, index) => ({
+      ...card,
+      imageIndex: 0,
+      zIndex: index,
+    })),
+  )
+
+  const sendToBack = (id: number) => {
+    setCards((prev) => {
+      const newCards = [...prev]
+      const index = newCards.findIndex((card) => card.id === id)
+      const [card] = newCards.splice(index, 1)
+      newCards.unshift(card)
+      return newCards
+    })
+  }
+
+  return (
+    <div
+      className="relative"
+      style={{
+        width: cardDimensions.width,
+        height: cardDimensions.height,
+        perspective: 600,
+      }}
+    >
+      {cards.map((card, index) => {
+        const randomRotate = randomRotation ? Math.random() * 10 - 5 : 0
+
+        return (
+          <CardRotate
+            key={card.id}
+            onSendToBack={() => sendToBack(card.id)}
+            sensitivity={sensitivity}
+          >
+            <motion.div
+              className="rounded-2xl overflow-hidden border-2 border-white shadow-xl"
+              onClick={() => sendToBackOnClick && sendToBack(card.id)}
+              animate={{
+                rotateZ: (cards.length - index - 1) * 4 + randomRotate,
+                scale: 1 + index * 0.06 - cards.length * 0.06,
+                transformOrigin: '90% 90%',
+              }}
+              initial={false}
+              transition={{
+                type: 'spring',
+                stiffness: animationConfig.stiffness,
+                damping: animationConfig.damping,
+              }}
+              style={{
+                width: cardDimensions.width,
+                height: cardDimensions.height,
+              }}
+            >
+              <Image
+                src={card.images[card.imageIndex].replace('./', '/')}
+                alt={card.alt}
+                fill
+                className="object-cover pointer-events-none"
+              />
+            </motion.div>
+          </CardRotate>
+        )
+      })}
+    </div>
+  )
+}
