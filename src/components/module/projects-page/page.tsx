@@ -7,7 +7,7 @@ import { slideInFromLeft, slideInFromTop } from '../../../../utils/motion'
 
 const Projects = () => {
   return (
-    <section id="projects-page" className="w-full h-screen mt-20 flex flex-col">
+    <section id="projects-page" className="w-full mt-20 flex flex-col">
       <div style={{ transform: 'scale(0.9)' }} className="flex items-center justify-center">
         <div className="w-full h-auto flex flex-col items-center ">
           <motion.div

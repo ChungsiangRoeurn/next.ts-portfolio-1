@@ -1,19 +1,21 @@
 import { motion, useMotionValue, useTransform } from 'framer-motion'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { aboutMeCards } from '../constants/about'
 
 interface CardRotateProps {
   children: React.ReactNode
   onSendToBack: () => void
   sensitivity: number
+  isMobile: boolean
 }
 
-function CardRotate({ children, onSendToBack, sensitivity }: CardRotateProps) {
+function CardRotate({ children, onSendToBack, sensitivity, isMobile }: CardRotateProps) {
   const x = useMotionValue(0)
   const y = useMotionValue(0)
-  const rotateX = useTransform(y, [-100, 100], [60, -60])
-  const rotateY = useTransform(x, [-100, 100], [-60, 60])
+
+  const rotateX = useTransform(y, [-100, 100], isMobile ? [0, 0] : [60, -60])
+  const rotateY = useTransform(x, [-100, 100], isMobile ? [0, 0] : [-60, 60])
 
   function handleDragEnd(_: never, info: { offset: { x: number; y: number } }) {
     if (Math.abs(info.offset.x) > sensitivity || Math.abs(info.offset.y) > sensitivity) {
@@ -42,7 +44,6 @@ function CardRotate({ children, onSendToBack, sensitivity }: CardRotateProps) {
 interface StackProps {
   randomRotation?: boolean
   sensitivity?: number
-  cardDimensions?: { width: number; height: number }
   sendToBackOnClick?: boolean
   animationConfig?: { stiffness: number; damping: number }
 }
@@ -50,7 +51,6 @@ interface StackProps {
 export default function Stack({
   randomRotation = false,
   sensitivity = 200,
-  cardDimensions = { width: 450, height: 450 },
   animationConfig = { stiffness: 260, damping: 20 },
   sendToBackOnClick = false,
 }: StackProps) {
@@ -61,6 +61,19 @@ export default function Stack({
       zIndex: index,
     })),
   )
+
+  const [isMobile, setIsMobile] = useState(false)
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 640)
+    }
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  const cardWidth = isMobile ? 300 : 450
+  const cardHeight = isMobile ? 300 : 450
 
   const sendToBack = (id: number) => {
     setCards((prev) => {
@@ -74,28 +87,30 @@ export default function Stack({
 
   return (
     <div
-      className="relative"
+      className="relative mx-auto"
       style={{
-        width: cardDimensions.width,
-        height: cardDimensions.height,
+        width: cardWidth,
+        height: cardHeight,
         perspective: 600,
       }}
     >
       {cards.map((card, index) => {
         const randomRotate = randomRotation ? Math.random() * 10 - 5 : 0
+        const scaleValue = isMobile ? 0.95 : Math.max(0.8, 1 + index * 0.06 - cards.length * 0.06)
 
         return (
           <CardRotate
             key={card.id}
             onSendToBack={() => sendToBack(card.id)}
             sensitivity={sensitivity}
+            isMobile={isMobile}
           >
             <motion.div
               className="rounded-2xl overflow-hidden border-2 border-white shadow-xl"
-              onClick={() => sendToBackOnClick && sendToBack(card.id)}
+              onClick={sendToBackOnClick ? () => sendToBack(card.id) : undefined}
               animate={{
                 rotateZ: (cards.length - index - 1) * 4 + randomRotate,
-                scale: 1 + index * 0.06 - cards.length * 0.06,
+                scale: scaleValue,
                 transformOrigin: '90% 90%',
               }}
               initial={false}
@@ -105,15 +120,16 @@ export default function Stack({
                 damping: animationConfig.damping,
               }}
               style={{
-                width: cardDimensions.width,
-                height: cardDimensions.height,
+                width: cardWidth,
+                height: cardHeight,
               }}
             >
               <Image
                 src={card.images[card.imageIndex].replace('./', '/')}
                 alt={card.alt}
-                fill
-                className="object-cover pointer-events-none"
+                layout="fill"
+                objectFit="cover"
+                className="pointer-events-none"
               />
             </motion.div>
           </CardRotate>
