@@ -1,10 +1,9 @@
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
+import Image from 'next/image'
+import Link from 'next/link'
 
 const Footer = () => {
   return (
-    <div className="h-auto w-full mt-52 flex flex-col items-center justify-center ">
+    <div className="h-auto w-full flex mt-20 flex-col items-center justify-center">
       <div className="flex-col flex justify-center items-center">
         <h1 className="text-slate-400">
           Belongs to <span className="underline">Chungsiang Roeurn</span>
@@ -17,14 +16,11 @@ const Footer = () => {
           target="_blank"
         >
           <Image src="/assets/linkedin.svg" alt="logo" width={30} height={30} />
-        </Link>{" "}
+        </Link>{' '}
         <Link href="https://github.com/ChungsiangRoeurn" target="_blank">
           <Image src="/assets/gitwhite.png" alt="logo" width={30} height={30} />
         </Link>
-        <Link
-          href="https://www.facebook.com/chungsiang.roeurn.79"
-          target="_blank"
-        >
+        <Link href="https://www.facebook.com/chungsiang.roeurn.79" target="_blank">
           <Image src="/assets/fb.svg" alt="logo" width={30} height={30} />
         </Link>
         <Link href="https://t.me/rn_chungsiang" target="_blank">
@@ -32,7 +28,7 @@ const Footer = () => {
         </Link>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer
